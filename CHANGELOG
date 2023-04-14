@@ -1,0 +1,7 @@
+# Sistema de Vendas Inventario Queiroz Lubrificantes Release Notes
+
+## 1.0.0 (13 de Abril de 2023)
+
+- Estrutura Inicial do Projeto
+
+O projeto utiliza Poetry como gester de dependencias.
