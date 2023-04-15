@@ -146,6 +146,21 @@ class VendaAPI:
         self.db.update(doc_ids=[id], fields=documento)
         return True
 
+    def buscar(self, termos: str):
+        m_vendas = self.listar()
+
+        m_vendas_filtradas: list[Venda] = []
+        for venda in m_vendas:
+            m_venda = {**venda}
+            del m_venda['id']
+
+            for termo in termos.split():
+                if termo.lower() in m_venda.__str__().lower() \
+                        and venda not in m_vendas_filtradas:
+                    m_vendas_filtradas.append(venda)
+
+        return m_vendas_filtradas
+
     def buscar_por_id(self, id: int):
         venda = self.db.get(doc_id=id)
         if venda is None:
