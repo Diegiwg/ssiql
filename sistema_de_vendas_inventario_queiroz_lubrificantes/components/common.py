@@ -1,0 +1,70 @@
+from typing import Union
+
+import toga
+
+from .style import Style, StyleDocument
+
+
+class Box(toga.Box):
+    def __init__(self, children: list[toga.Widget] = [],
+                 style: StyleDocument = StyleDocument()):
+
+        super().__init__(children=children)
+        Style(self, style)
+
+
+class Column(Box):
+    def __init__(self, children: list[toga.Widget] = [],
+                 style: StyleDocument = StyleDocument()):
+
+        style['direction'] = 'column'
+        super().__init__(children=children, style=style)
+
+
+class Row(Box):
+    def __init__(self, children: list[toga.Widget] = [],
+                 style: StyleDocument = StyleDocument()):
+
+        style['direction'] = 'row'
+        super().__init__(children=children, style=style)
+
+
+class Divider(toga.Divider):
+    def __init__(self):
+        super().__init__()
+        Style(self)
+
+
+class Label(toga.Label):
+    def __init__(self, text: str,
+                 style: StyleDocument = StyleDocument()):
+        super().__init__(text=text)
+        Style(self, style)
+
+
+class NumberInput(toga.NumberInput):
+    def __init__(self, value: Union[int, None] = None,
+                 style: StyleDocument = StyleDocument()):
+        super().__init__(value=value)
+        Style(self, style)
+
+
+class TextInput(toga.TextInput):
+    def __init__(self, value: Union[str, None] = None, on_change=None,
+                 style: StyleDocument = StyleDocument()):
+        super().__init__(value=value, on_change=on_change)
+        Style(self, style)
+
+
+class Button(toga.Button):
+    def __init__(self, text: str, on_press=None,
+                 style: StyleDocument = StyleDocument()):
+        super().__init__(text=text, on_press=on_press)
+        Style(self, style)
+
+
+class Selection(toga.Selection):
+    def __init__(self, items: list[str] = [],
+                 style: StyleDocument = StyleDocument()):
+        super().__init__(items=items)
+        Style(self, style)
