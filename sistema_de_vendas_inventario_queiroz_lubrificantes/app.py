@@ -1,19 +1,16 @@
 import toga
 
-from .database import database_api
-
-api = database_api()
+from .components import Column
 
 
-class SistemadeVendasInventarioQueirozLubrificantes(toga.App):
+class App(toga.App):
 
     def startup(self):
-        main_box = toga.Box()
 
         self.main_window = toga.MainWindow(title=self.formal_name)
-        self.main_window.content = main_box
+        self.main_window.content = Column()
         self.main_window.show()
 
 
 def main():
-    return SistemadeVendasInventarioQueirozLubrificantes()
+    return App()

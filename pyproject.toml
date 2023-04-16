@@ -1,17 +1,10 @@
 [tool.poetry]
-name = "sistema-de-vendas-inventario-queiroz-lubrificantes"
-version = "1.2.0"
-license = "MIT license"
-description = ""
-authors = ["Diegiwg (Diego Queiroz) <diegiwg@gmail.com>"]
-readme = "README.md"
 packages = [{include = "sistema_de_vendas_inventario_queiroz_lubrificantes"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 briefcase = "0.3.14"
 tinydb = "4.7.1"
-
 
 [build-system]
 requires = ["poetry-core"]
@@ -20,7 +13,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.briefcase]
 project_name = "Sistema de Vendas Inventario Queiroz Lubrificantes"
 bundle = "com.diegiwg"
-version = "1.2.0"
+version = "1.2.1"
 url = ""
 license = "MIT license"
 author = "Diegiwg (Diego Queiroz)"
@@ -39,8 +32,9 @@ test_sources = [
 ]
 
 requires = [
-    "tinydb"
+    "tinydb==4.7.1",
 ]
+
 test_requires = [
     "pytest",
 ]
