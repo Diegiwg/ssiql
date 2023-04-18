@@ -15,4 +15,4 @@
 
 ## Downloads
 
-[Windows (alpha)](https://www.mediafire.com/file/t4fnpgmvq1hgyhp/Sistema+de+Vendas+Inventario+Queiroz+Lubrificantes-1.7.0.msi/file)
+[Lançamentos](https://github.com/Diegiwg/sistema-de-vendas-inventario-queiroz-lubrificantes/releases)
