@@ -25,7 +25,8 @@ def run_tests():
             # Overwrite the cache directory to somewhere writable
             "-o",
             f"cache_dir={tempfile.gettempdir()}/.pytest_cache",
-        ] + args
+        ]
+        + args
     )
 
     print(f">>>>>>>>>> EXIT {returncode} <<<<<<<<<<")
