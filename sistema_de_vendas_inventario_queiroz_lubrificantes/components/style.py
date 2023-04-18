@@ -7,8 +7,8 @@ class StyleDocument(TypedDict):
     width: NotRequired[int]
     height: NotRequired[int]
 
-    direction: NotRequired[Literal['row', 'column', None]]
-    alignment: NotRequired[Literal['top', 'bottom', 'left', 'right', 'center']]
+    direction: NotRequired[Literal["row", "column", None]]
+    alignment: NotRequired[Literal["top", "bottom", "left", "right", "center"]]
 
     flex: NotRequired[int]
     padding: NotRequired[int]
@@ -17,28 +17,28 @@ class StyleDocument(TypedDict):
     padding_left: NotRequired[int]
     padding_right: NotRequired[int]
 
-    text_align: NotRequired[Literal['left', 'center', 'right', 'justify']]
-    text_direction: NotRequired[Literal['ltr', 'rtl']]
+    text_align: NotRequired[Literal["left", "center", "right", "justify"]]
+    text_direction: NotRequired[Literal["ltr", "rtl"]]
 
     font_size: NotRequired[int]
-    font_weight: NotRequired[Literal['normal', 'bold']]
-    font_variant: NotRequired[Literal['normal', 'small_caps']]
+    font_weight: NotRequired[Literal["normal", "bold"]]
+    font_variant: NotRequired[Literal["normal", "small_caps"]]
 
 
 class Style:
     def __init__(self, widget: Widget, document: Union[StyleDocument, None] = None):
         # DEFAULTS
-        widget.style['font_size'] = '10'
+        widget.style["font_size"] = "10"
 
         if document is None:
             return
 
-        if 'padding' in document:
-            widget.style['padding_top'] = document['padding']
-            widget.style['padding_bottom'] = document['padding']
-            widget.style['padding_left'] = document['padding']
-            widget.style['padding_right'] = document['padding']
-            del document['padding']
+        if "padding" in document:
+            widget.style["padding_top"] = document["padding"]
+            widget.style["padding_bottom"] = document["padding"]
+            widget.style["padding_left"] = document["padding"]
+            widget.style["padding_right"] = document["padding"]
+            del document["padding"]
 
         for atributo, valor in document.items():
             widget.style[atributo] = valor
