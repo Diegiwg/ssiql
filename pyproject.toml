@@ -1,19 +1,10 @@
-[tool.poetry]
-packages = [{include = "sistema_de_vendas_inventario_queiroz_lubrificantes"}]
-
-[tool.poetry.dependencies]
-python = "^3.11"
-briefcase = "0.3.14"
-tinydb = "4.7.1"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+ignore = ["E501", "F401"]
 
 [tool.briefcase]
 project_name = "Sistema de Vendas Inventario Queiroz Lubrificantes"
 bundle = "com.diegiwg"
-version = "1.2.1"
+version = "1.2.2"
 url = ""
 license = "MIT license"
 author = "Diegiwg (Diego Queiroz)"
