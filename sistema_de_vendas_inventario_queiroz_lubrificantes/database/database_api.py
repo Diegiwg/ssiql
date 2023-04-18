@@ -8,10 +8,11 @@ from .database_files import produtos_db, vendas_db
 from .database_models import MetodoPagamento, Produto, Venda
 
 
-def verificar_se_existe_o_mesmo_documento(documento: Union[Produto, Venda],
-                                          banco_dados: TinyDB):
-    if documento.__contains__('id'):
-        del documento['id']
+def verificar_se_existe_o_mesmo_documento(
+    documento: Union[Produto, Venda], banco_dados: TinyDB
+):
+    if documento.__contains__("id"):
+        del documento["id"]
 
     for item in banco_dados.all():
         resultado_existencia_atributos = []
@@ -29,7 +30,7 @@ def verificar_se_existe_o_mesmo_documento(documento: Union[Produto, Venda],
 
 
 def adicionar_id_ao_documento(documento: Document):
-    return {'id': documento.doc_id, **documento}
+    return {"id": documento.doc_id, **documento}
 
 
 class ProdutoAPI:
@@ -43,13 +44,12 @@ class ProdutoAPI:
             marca="dummy",
             referencia="dummy",
             preco=0.00,
-            quantidade=0
+            quantidade=0,
         )
 
     def listar(self):
         return [
-            Produto(**adicionar_id_ao_documento(produto))
-            for produto in self.db.all()
+            Produto(**adicionar_id_ao_documento(produto)) for produto in self.db.all()
         ]
 
     def criar(self, documento: Produto):
@@ -73,13 +73,15 @@ class ProdutoAPI:
         m_produtos_filtrados: list[Produto] = []
         for produto in m_produtos:
             m_produto = {**produto}
-            del m_produto['id']
-            del m_produto['preco']
-            del m_produto['quantidade']
+            del m_produto["id"]
+            del m_produto["preco"]
+            del m_produto["quantidade"]
 
             for termo in termos.split():
-                if termo.lower() in m_produto.__str__().lower() \
-                        and produto not in m_produtos_filtrados:
+                if (
+                    termo.lower() in m_produto.__str__().lower()
+                    and produto not in m_produtos_filtrados
+                ):
                     m_produtos_filtrados.append(produto)
 
         return m_produtos_filtrados
@@ -98,8 +100,7 @@ class ProdutoAPI:
         m_produtos_filtrados: list[Produto] = []
         for termo in termos.split():
             m_produtos = self.db.search(
-                where(atributo.lower()).search(
-                    r'{}'.format(termo), IGNORECASE)
+                where(atributo.lower()).search(r"{}".format(termo), IGNORECASE)
             )
 
             for produto in m_produtos:
@@ -122,14 +123,11 @@ class VendaAPI:
             produtos=[],
             nome_cliente="dummy",
             ocorreu_em="dummy",
-            preco_total=0.00
+            preco_total=0.00,
         )
 
     def listar(self):
-        return [
-            Venda(**adicionar_id_ao_documento(venda))
-            for venda in self.db.all()
-        ]
+        return [Venda(**adicionar_id_ao_documento(venda)) for venda in self.db.all()]
 
     def criar(self, documento: Venda):
         if verificar_se_existe_o_mesmo_documento(documento, self.db):
@@ -152,11 +150,13 @@ class VendaAPI:
         m_vendas_filtradas: list[Venda] = []
         for venda in m_vendas:
             m_venda = {**venda}
-            del m_venda['id']
+            del m_venda["id"]
 
             for termo in termos.split():
-                if termo.lower() in m_venda.__str__().lower() \
-                        and venda not in m_vendas_filtradas:
+                if (
+                    termo.lower() in m_venda.__str__().lower()
+                    and venda not in m_vendas_filtradas
+                ):
                     m_vendas_filtradas.append(venda)
 
         return m_vendas_filtradas
@@ -168,13 +168,25 @@ class VendaAPI:
 
         return Venda(**adicionar_id_ao_documento(venda))
 
+    def buscar_por_atributo(self, termos: str, atributo: str):
+        if atributo.lower() not in self.__dummy__().keys():
+            return
+
+        m_vendas_filtradas: list[Venda] = []
+        for termo in termos.split():
+            m_vendas = self.db.search(
+                where(atributo.lower()).search(r"{}".format(termo), IGNORECASE)
+            )
+
+            for venda in m_vendas:
+                if venda not in m_vendas_filtradas:
+                    m_vendas_filtradas.append(Venda(**adicionar_id_ao_documento(venda)))
+
+        return m_vendas_filtradas
+
 
 class API:
-    def __init__(self, storage: Literal['Memory', None] = None) -> None:
-        self.produto = ProdutoAPI(
-            produtos_db(storage)
-        )
+    def __init__(self, storage: Literal["Memory", None] = None) -> None:
+        self.produto = ProdutoAPI(produtos_db(storage))
 
-        self.venda = VendaAPI(
-            vendas_db(storage)
-        )
+        self.venda = VendaAPI(vendas_db(storage))
