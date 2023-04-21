@@ -1,3 +1,6 @@
+[tool.pyright]
+exclude = ["build", "dist", "logs", ".venv"]
+
 [tool.ruff]
 ignore = ["E501", "F401"]
 
