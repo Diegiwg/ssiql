@@ -79,7 +79,7 @@ class ProdutoAPI:
 
             for termo in termos.split():
                 if (
-                    termo.lower() in m_produto.__str__().lower()
+                    termo.lower() in " ".join(m_produto.values()).lower()
                     and produto not in m_produtos_filtrados
                 ):
                     m_produtos_filtrados.append(produto)
@@ -154,7 +154,7 @@ class VendaAPI:
 
             for termo in termos.split():
                 if (
-                    termo.lower() in m_venda.__str__().lower()
+                    termo.lower() in " ".join(m_venda.values()).lower()
                     and venda not in m_vendas_filtradas
                 ):
                     m_vendas_filtradas.append(venda)

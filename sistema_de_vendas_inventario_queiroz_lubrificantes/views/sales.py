@@ -16,15 +16,18 @@ from ..database import Produto, Venda
 from ..views import ViewModel, view_controller
 
 
-def search_handle(data: list, search: str):
+def search_handle(data: list, search: str, *del_keys: str):
     m_filtered_data: list = []
     for m_data in data:
         m_temp = {**m_data}
         del m_temp["id"]
 
+        for key in del_keys:
+            del m_temp[key]
+
         for m_search in search.split():
             if (
-                m_search.lower() in m_temp.__str__().lower()
+                m_search.lower() in " ".join(m_temp.values()).lower()
                 and m_data not in m_filtered_data
             ):
                 m_filtered_data.append(m_data)
@@ -184,7 +187,11 @@ class View(ViewModel):
 
     def available_products_filtersource(self, search: str):
         m_products: list[Produto] = search_handle(
-            self.available_products_datasource(), search
+            self.available_products_datasource(),
+            search,
+            "referencia",
+            "preco",
+            "quantidade",
         )
         return m_products
 
@@ -192,7 +199,9 @@ class View(ViewModel):
         return self.shopping_cart
 
     def products_in_shopping_cart_filtersource(self, search: str):
-        m_products: list[Produto] = search_handle(self.shopping_cart, search)
+        m_products: list[Produto] = search_handle(
+            self.shopping_cart, search, "referencia", "preco", "quantidade"
+        )
         return m_products
 
     def clear_shopping_cart_handler(self):

@@ -10,7 +10,7 @@ def search_handle(data: list, search: str):
 
         for m_search in search.split():
             if (
-                m_search.lower() in m_temp.__str__().lower()
+                m_search.lower() in " ".join(m_temp.values()).lower()
                 and m_data not in m_filtered_data
             ):
                 m_filtered_data.append(m_data)
