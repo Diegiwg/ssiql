@@ -65,6 +65,10 @@ class View(ViewModel):
             style={"flex": 1, "padding_right": 10},
         )
 
+        self.label_total_value_in_shopping_cart = Label(
+            "Valor total da compra: R$ 0.00", style={"flex": 1}
+        )
+
         view_controller.update_main(
             [
                 Column(
@@ -101,7 +105,7 @@ class View(ViewModel):
                                 self.table_products_in_shopping_cart,
                                 Row(
                                     [
-                                        Box(style={"flex": 1}),
+                                        self.label_total_value_in_shopping_cart,
                                         Button(
                                             "Remover Produto",
                                             lambda _: self.remove_product_from_shopping_cart_handler(),
@@ -151,6 +155,22 @@ class View(ViewModel):
     def tables_update(self):
         self.table_available_products.update()
         self.table_products_in_shopping_cart.update()
+
+        # Atualizar o valor total da compra
+        if self.shopping_cart:
+            m_total_value = float(
+                sum(
+                    [
+                        product["preco"] * product["quantidade"]
+                        for product in self.shopping_cart
+                    ]
+                )
+            )
+        else:
+            m_total_value = 0.00
+        self.label_total_value_in_shopping_cart.text = (
+            f"Valor total da compra: R$ {m_total_value:.2f}"
+        )
 
     def available_products_datasource(self):
         m_products = view_controller.database.produto.listar()
