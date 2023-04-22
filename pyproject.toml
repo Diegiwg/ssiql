@@ -7,7 +7,7 @@ ignore = ["E501", "F401"]
 [tool.briefcase]
 project_name = "Sistema de Vendas Inventario Queiroz Lubrificantes"
 bundle = "com.diegiwg"
-version = "1.8.1"
+version = "1.8.2"
 url = ""
 license = "MIT license"
 author = "Diegiwg (Diego Queiroz)"

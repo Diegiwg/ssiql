@@ -23,7 +23,7 @@ def product_update_handle(table: Table):
     view_controller.redirect_to("product_update", product)
 
 
-class View(ViewModel):
+class Model(ViewModel):
     def __init__(self) -> None:
         self.id = "products"
 
@@ -71,4 +71,4 @@ class View(ViewModel):
         )
 
 
-products_model = View()
+view_controller.register_model(Model())

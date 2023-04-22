@@ -50,7 +50,7 @@ def create_handle(form: ProductForm):
     view_controller.redirect_to_previous()
 
 
-class View(ViewModel):
+class Model(ViewModel):
     def __init__(self) -> None:
         self.id = "product_create"
 
@@ -103,4 +103,4 @@ class View(ViewModel):
         )
 
 
-product_create_model = View()
+view_controller.register_model(Model())

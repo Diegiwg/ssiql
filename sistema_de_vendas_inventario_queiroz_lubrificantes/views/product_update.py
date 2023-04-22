@@ -51,7 +51,7 @@ def update_handle(product_id: int, form: ProductForm):
     view_controller.redirect_to_previous()
 
 
-class View(ViewModel):
+class Model(ViewModel):
     def __init__(self) -> None:
         self.id = "product_update"
 
@@ -115,4 +115,4 @@ class View(ViewModel):
         )
 
 
-product_update_model = View()
+view_controller.register_model(Model())

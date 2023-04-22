@@ -1,4 +1,4 @@
 from ..database import API
-from .views import ViewController, ViewModel  # noqa: F401
+from .views import ViewController, ViewModel
 
 view_controller = ViewController(API())

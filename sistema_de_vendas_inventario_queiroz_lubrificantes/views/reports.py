@@ -27,7 +27,7 @@ def sales_dates_datasource():
     return m_dates
 
 
-class View(ViewModel):
+class Model(ViewModel):
     def __init__(self) -> None:
         self.id = "reports"
 
@@ -116,4 +116,4 @@ class View(ViewModel):
         return search_handle(m_data, search)
 
 
-reports_model = View()
+view_controller.register_model(Model())

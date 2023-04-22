@@ -34,7 +34,7 @@ def search_handle(data: list, search: str, *del_keys: str):
     return m_filtered_data
 
 
-class View(ViewModel):
+class Model(ViewModel):
     def __init__(self) -> None:
         self.id = "sales"
 
@@ -267,4 +267,4 @@ class View(ViewModel):
         self.tables_update()
 
 
-sales_model = View()
+view_controller.register_model(Model())
