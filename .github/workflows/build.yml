@@ -1,0 +1,30 @@
+name: Build
+on: [push]
+jobs:
+  Windows-Build:
+    runs-on: windows-latest
+    steps:
+        - name: Sincronizar repositorio
+          uses: actions/checkout@v3
+
+        - name: Instalar Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.11'
+            cache: 'pip'
+        
+        - name: Instalar bibliotecas
+          run: |
+            pip install -r .\requirements.txt
+            briefcase create
+            briefcase build -r
+            briefcase package
+
+        - name: Tree
+          run: tree
+
+        - name: Salvar arquivos compilados
+          uses: actions/upload-artifact@v3
+          with:
+            name: build_files
+            path: dist
