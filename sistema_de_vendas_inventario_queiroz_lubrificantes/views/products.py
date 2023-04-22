@@ -2,33 +2,12 @@ from ..components import Button, Column, Divider, Label, Row, Table
 from ..views import ViewModel, view_controller
 
 
-def products_filter_handle(search: str):
-    return view_controller.database.produto.buscar(search)
-
-
-def product_delete_handle(table: Table):
-    product = table.selected()
-    if not product or "id" not in product:
-        return
-
-    view_controller.database.produto.excluir(product["id"])
-    table.update()
-
-
-def product_update_handle(table: Table):
-    product = table.selected()
-    if not product:
-        return
-
-    view_controller.redirect_to("product_update", product)
-
-
 class Model(ViewModel):
     def __init__(self) -> None:
         self.id = "products"
 
     def update(self):
-        m_table = Table(
+        self.m_table = Table(
             headings=["Nome", "Marca", "Referencia", "Preco", "Quantidade"],
             data_source=view_controller.database.produto.listar,
             filter_source=view_controller.database.produto.buscar,
@@ -41,7 +20,7 @@ class Model(ViewModel):
                     [
                         Label("Produtos"),
                         Divider(),
-                        m_table,
+                        self.m_table,
                         Divider(),
                         Row(
                             [
@@ -54,12 +33,12 @@ class Model(ViewModel):
                                 ),
                                 Button(
                                     "Alterar Produto",
-                                    lambda _: product_update_handle(m_table),
+                                    lambda _: self.product_update_handle(),
                                     {"flex": 1, "padding_right": 10},
                                 ),
                                 Button(
                                     "Excluir Produto",
-                                    lambda _: product_delete_handle(m_table),
+                                    lambda _: self.product_delete_handle(),
                                     {"flex": 1},
                                 ),
                             ]
@@ -69,6 +48,21 @@ class Model(ViewModel):
                 )
             ]
         )
+
+    def product_delete_handle(self):
+        product = self.m_table.selected()
+        if not product or "id" not in product:
+            return
+
+        view_controller.database.produto.excluir(product["id"])
+        self.m_table.update()
+
+    def product_update_handle(self):
+        product = self.m_table.selected()
+        if not product:
+            return
+
+        view_controller.redirect_to("product_update", product)
 
 
 view_controller.register_model(Model())
