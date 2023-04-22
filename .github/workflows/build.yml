@@ -15,7 +15,7 @@ jobs:
         
         - name: Instalar bibliotecas
           run: |
-            pip install -r .\requirements.txt
+            pip install -r .\requirements-dev.txt
             briefcase create
             briefcase build -r
             briefcase package
