@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from ..components import Box, Column, Divider, Label, Row, Selection, Table
 from ..views import ViewModel, view_controller
 
@@ -19,11 +21,13 @@ def search_handle(data: list, search: str):
 
 def sales_dates_datasource():
     m_sales = view_controller.database.venda.listar()
-    m_dates: list[str] = []
+    m_dates = [str(datetime.now()).split()[0]]
     for sale in m_sales:
         m_date = sale["ocorreu_em"].split()[0]
         if m_date not in m_dates:
             m_dates.append(m_date)
+
+    m_dates.sort(reverse=True)
     return m_dates
 
 
