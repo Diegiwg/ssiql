@@ -2,10 +2,8 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "C:/Users/User/data"
 		}
+		
 	],
 	"settings": {
 		"editor.formatOnSave": true,

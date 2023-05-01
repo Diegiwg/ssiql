@@ -5,8 +5,8 @@ from tinydb import TinyDB
 from tinydb.storages import MemoryStorage
 
 # Criar diretorio caso não exista
-if not os.path.exists(os.path.expanduser("~/datas")):
-    os.mkdir(os.path.expanduser("~/datas"))
+if not os.path.exists(os.path.expanduser("~/data")):
+    os.mkdir(os.path.expanduser("~/data"))
 
 
 def produtos_db(storage: Literal["Memory", None] = None):
