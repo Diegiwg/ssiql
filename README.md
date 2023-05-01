@@ -24,7 +24,8 @@ Caso queira executar a versão de desenvolvimento, basta seguir os seguintes pas
 
 1. Clonar o repositório: `git clone https://github.com/Diegiwg/sistema-de-vendas-inventario-queiroz-lubrificantes.git`
 2. Navegar até o diretorio: `cd sistema-de-vendas-inventario-queiroz-lubrificantes`
-3. Executar o comando: `briefcase dev`
+3. Executar o comando: `pip install -r requirements-dev.txt`
+4. Executar o comando: `briefcase dev`
 
 ### Banco de Dados
 
