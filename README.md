@@ -1,5 +1,9 @@
 # Sistema de Vendas e Inventario - Loja Queiroz Lubrificantes e Auto Peças
 
+## Demonstração do Projeto
+
+<https://user-images.githubusercontent.com/15692310/232661172-8889bc01-2f12-4213-a360-2d2225b23ed8.mp4>
+
 ## Descrição do Projeto
 
 O projeto é um sistema com interface simplificada, que abrange o controle de Produtos e Estoque, com as operações de cadastro, listagem, alteração e exclusão de produtos.
@@ -7,10 +11,6 @@ O projeto é um sistema com interface simplificada, que abrange o controle de Pr
 Faz parte também do projeto, o sistema de vendas, no qual existe a opção de Nomear o Cliente, seleciona o metodo de pagamento e finalizar a compra.
 
 Por fim, existe a opção de visualizar as vendas que ocorreram em uma determinada data.
-
-### Demonstração do Projeto
-
-<https://user-images.githubusercontent.com/15692310/232661172-8889bc01-2f12-4213-a360-2d2225b23ed8.mp4>
 
 ### Regras de Uso
 
