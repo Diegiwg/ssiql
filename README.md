@@ -1,5 +1,3 @@
-Ótimo! Segue abaixo o README atualizado:
-
 # Sistema de Vendas e Inventario - Loja Queiroz Lubrificantes e Auto Peças
 
 ## Demonstração do Projeto
