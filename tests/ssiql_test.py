@@ -7,6 +7,17 @@ import pytest
 
 
 def run_tests():
+    """
+    Run the test suite.
+
+    This function changes the current working directory to the project path,
+    determines any arguments to pass to pytest, and runs pytest with the
+    specified arguments. If no arguments are provided, the function defaults to
+    running the entire test suite.
+
+    Returns:
+        int: The return code of the pytest execution.
+    """
     project_path = Path(__file__).parent.parent
     os.chdir(project_path)
 

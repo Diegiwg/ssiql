@@ -4,27 +4,55 @@ jobs:
   Windows-Build:
     runs-on: windows-latest
     steps:
-        - name: Sincronizar repositorio
-          uses: actions/checkout@v3
+      - name: Sync Repository
+        uses: actions/checkout@v3
 
-        - name: Instalar Python
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.11'
-            cache: 'pip'
-        
-        - name: Instalar bibliotecas
-          run: |
-            pip install -r .\requirements-dev.txt
-            briefcase create
-            briefcase build -r
-            briefcase package
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
 
-        - name: Tree
-          run: tree
+      - name: Install Libraries
+        run: |
+          pip install -r .\requirements-dev.txt
+          briefcase create
+          briefcase build -t windows -r
+          briefcase package -t windows
 
-        - name: Salvar arquivos compilados
-          uses: actions/upload-artifact@v3
-          with:
-            name: build_files
-            path: dist
+      - name: Tree
+        run: tree
+
+      - name: Save Compiled Files
+        uses: actions/upload-artifact@v3
+        with:
+          name: build_files_windows
+          path: dist
+
+  Linux-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Repository
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Libraries
+        run: |
+          pip install -r ./requirements-dev.txt
+          briefcase create
+          briefcase build -t linux -r
+          briefcase package -t linux
+
+      - name: Tree
+        run: tree
+
+      - name: Save Compiled Files
+        uses: actions/upload-artifact@v3
+        with:
+          name: build_files_linux
+          path: dist
