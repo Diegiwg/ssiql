@@ -17,8 +17,8 @@ jobs:
         run: |
           pip install -r .\requirements-dev.txt
           briefcase create
-          briefcase build -t windows -r
-          briefcase package -t windows
+          briefcase build -r
+          briefcase package
 
       - name: Tree
         run: tree
@@ -45,8 +45,8 @@ jobs:
         run: |
           pip install -r ./requirements-dev.txt
           briefcase create
-          briefcase build -t linux -r
-          briefcase package -t linux
+          briefcase build -r
+          briefcase package
 
       - name: Tree
         run: tree
