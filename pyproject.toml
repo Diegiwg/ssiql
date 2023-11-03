@@ -8,15 +8,15 @@ ignore = ["E501", "F401"]
 project_name = "ssiql"
 bundle = "com.diegiwg"
 version = "2.0.0"
-url = ""
+url = "https://github.com/Diegiwg/ssiql"
 license = "MIT license"
 author = "Diegiwg (Diego Queiroz)"
 author_email = "diegiwg@gmail.com"
 
 [tool.briefcase.app.ssiql]
 formal_name = "ssiql"
-description = " "
-long_description = ""
+description = "Sales and Inventory System"
+long_description = "This project is a system with a simplified interface that covers product and inventory control, including operations for product registration, listing, modification, and deletion. The project also includes a sales system where you can name the customer, select the payment method, and complete the purchase. Finally, there is an option to view sales that occurred on a specific date."
 icon = "ssiql/resources/ssiql"
 sources = ["ssiql"]
 test_sources = ["tests"]

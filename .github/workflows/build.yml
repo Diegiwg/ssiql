@@ -16,12 +16,8 @@ jobs:
       - name: Install Libraries
         run: |
           pip install -r .\requirements-dev.txt
-          briefcase create
-          briefcase build -t windows -r
-          briefcase package -t windows
-
-      - name: Tree
-        run: tree
+          briefcase build -r
+          briefcase package
 
       - name: Save Compiled Files
         uses: actions/upload-artifact@v3
@@ -43,13 +39,10 @@ jobs:
 
       - name: Install Libraries
         run: |
+          sudo apt install pkg-config libcairo2-dev python3.11-dev libgirepository1.0-dev
           pip install -r ./requirements-dev.txt
-          briefcase create
-          briefcase build -t linux -r
-          briefcase package -t linux
-
-      - name: Tree
-        run: tree
+          briefcase build -r
+          briefcase package
 
       - name: Save Compiled Files
         uses: actions/upload-artifact@v3
