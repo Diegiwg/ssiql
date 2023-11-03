@@ -24,28 +24,3 @@ jobs:
         with:
           name: build_files_windows
           path: dist
-
-  Linux-Build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Sync Repository
-        uses: actions/checkout@v3
-
-      - name: Install Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-          cache: "pip"
-
-      - name: Install Libraries
-        run: |
-          sudo apt install pkg-config libcairo2-dev python3.10-dev libgirepository1.0-dev
-          pip install -r ./requirements-dev.txt
-          briefcase build -r
-          briefcase package
-
-      - name: Save Compiled Files
-        uses: actions/upload-artifact@v3
-        with:
-          name: build_files_linux
-          path: dist
