@@ -5,46 +5,33 @@ exclude = ["build", "dist", "logs", ".venv"]
 ignore = ["E501", "F401"]
 
 [tool.briefcase]
-project_name = "Sistema de Vendas Inventario Queiroz Lubrificantes"
+project_name = "ssiql"
 bundle = "com.diegiwg"
-version = "1.8.4"
+version = "2.0.0"
 url = ""
 license = "MIT license"
 author = "Diegiwg (Diego Queiroz)"
 author_email = "diegiwg@gmail.com"
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes]
-formal_name = "Sistema de Vendas Inventario Queiroz Lubrificantes"
+[tool.briefcase.app.ssiql]
+formal_name = "ssiql"
 description = " "
 long_description = ""
-icon = "sistema_de_vendas_inventario_queiroz_lubrificantes/resources/sistema_de_vendas_inventario_queiroz_lubrificantes"
-sources = [
-    "sistema_de_vendas_inventario_queiroz_lubrificantes",
-]
-test_sources = [
-    "tests",
-]
+icon = "ssiql/resources/ssiql"
+sources = ["ssiql"]
+test_sources = ["tests"]
 
-requires = [
-    "tinydb==4.7.1",
-]
+requires = ["tinydb==4.7.1"]
 
-test_requires = [
-    "pytest",
-]
+test_requires = ["pytest"]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.macOS]
-requires = [
-    "toga-cocoa~=0.3.1",
-    "std-nslog~=1.0.0"
-]
+[tool.briefcase.app.ssiql.macOS]
+requires = ["toga-cocoa~=0.3.1", "std-nslog~=1.0.0"]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.linux]
-requires = [
-    "toga-gtk~=0.3.1",
-]
+[tool.briefcase.app.ssiql.linux]
+requires = ["toga-gtk~=0.3.1"]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.linux.system.debian]
+[tool.briefcase.app.ssiql.linux.system.debian]
 system_requires = [
     # Needed to compile pycairo wheel
     "libcairo2-dev",
@@ -63,7 +50,7 @@ system_runtime_requires = [
     # "gir1.2-webkit2-4.0",
 ]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.linux.system.rhel]
+[tool.briefcase.app.ssiql.linux.system.rhel]
 system_requires = [
     # Needed to compile pycairo wheel
     "cairo-gobject-devel",
@@ -80,7 +67,7 @@ system_runtime_requires = [
     # "webkit2gtk3",
 ]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.linux.system.arch]
+[tool.briefcase.app.ssiql.linux.system.arch]
 system_requires = [
     # Needed to compile pycairo wheel
     "cairo",
@@ -107,7 +94,7 @@ system_runtime_requires = [
     # "webkit2gtk",
 ]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.linux.appimage]
+[tool.briefcase.app.ssiql.linux.appimage]
 manylinux = "manylinux2014"
 
 system_requires = [
@@ -125,35 +112,24 @@ system_requires = [
     # Needed to provide WebKit2 at runtime
     # "webkit2gtk3",
 ]
-linuxdeploy_plugins = [
-    "DEPLOY_GTK_VERSION=3 gtk",
-]
+linuxdeploy_plugins = ["DEPLOY_GTK_VERSION=3 gtk"]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.linux.flatpak]
+[tool.briefcase.app.ssiql.linux.flatpak]
 flatpak_runtime = "org.gnome.Platform"
 flatpak_runtime_version = "44"
 flatpak_sdk = "org.gnome.Sdk"
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.windows]
-requires = [
-    "toga-winforms~=0.3.1",
-]
+[tool.briefcase.app.ssiql.windows]
+requires = ["toga-winforms~=0.3.1"]
 
 # Mobile deployments
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.iOS]
-requires = [
-    "toga-iOS~=0.3.1",
-    "std-nslog~=1.0.0"
-]
+[tool.briefcase.app.ssiql.iOS]
+requires = ["toga-iOS~=0.3.1", "std-nslog~=1.0.0"]
 
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.android]
-requires = [
-    "toga-android~=0.3.1"
-]
+[tool.briefcase.app.ssiql.android]
+requires = ["toga-android~=0.3.1"]
 
 # Web deployments
-[tool.briefcase.app.sistema_de_vendas_inventario_queiroz_lubrificantes.web]
-requires = [
-    "toga-web~=0.3.1",
-]
+[tool.briefcase.app.ssiql.web]
+requires = ["toga-web~=0.3.1"]
 style_framework = "Shoelace v2.3"

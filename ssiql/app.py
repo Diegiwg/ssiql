@@ -1,17 +1,17 @@
 import toga
 
-from .views import (
-    product_create,
-    product_update,
-    products,
-    reports,
-    sales,
-    view_controller,
-)
+from .views import view_controller
 
 
 class App(toga.App):
+    """
+    Main application class.
+    """
     def startup(self):
+        """
+        Initializes the application and sets up the main view model, 
+        the main window, and the full screen mode.
+        """
         # Main View Model
         view_controller.redirect_to("sales")
         view_controller.update_model()
@@ -26,4 +26,7 @@ class App(toga.App):
 
 
 def main():
+    """
+    Initializes and returns an instance of the `App` class.
+    """
     return App()

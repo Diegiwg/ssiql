@@ -4,6 +4,10 @@ from toga import Widget
 
 
 class StyleDocument(TypedDict):
+    """
+    Represents the style document of a widget.
+    """
+
     width: NotRequired[int]
     height: NotRequired[int]
 
@@ -26,7 +30,27 @@ class StyleDocument(TypedDict):
 
 
 class Style:
-    def __init__(self, widget: Widget, document: Union[StyleDocument, None] = None):
+    """
+    Represents the style of a widget.
+    """
+
+    def __init__(
+        self,
+        widget: Widget,
+        document: Union[StyleDocument, None] = None,
+    ):
+        """
+        Initializes the class instance with the given widget and document.
+
+        Parameters:
+            widget (Widget): The widget to be initialized.
+
+            document (Union[StyleDocument, None], optional): The document containing
+            the style information. Defaults to None.
+
+        Returns:
+            None
+        """
         # DEFAULTS
         widget.style["font_size"] = "10"
 
@@ -40,5 +64,5 @@ class Style:
             widget.style["padding_right"] = document["padding"]
             del document["padding"]
 
-        for atributo, valor in document.items():
-            widget.style[atributo] = valor
+        for attr, value in document.items():
+            widget.style[attr] = value
