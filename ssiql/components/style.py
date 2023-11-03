@@ -1,4 +1,4 @@
-from typing import Literal, NotRequired, TypedDict, Union
+from typing import Literal, TypedDict, Union
 
 from toga import Widget
 
@@ -8,25 +8,25 @@ class StyleDocument(TypedDict):
     Represents the style document of a widget.
     """
 
-    width: NotRequired[int]
-    height: NotRequired[int]
+    width: int
+    height: int
 
-    direction: NotRequired[Literal["row", "column", None]]
-    alignment: NotRequired[Literal["top", "bottom", "left", "right", "center"]]
+    direction: Literal["row", "column", None]
+    alignment: Literal["top", "bottom", "left", "right", "center"]
 
-    flex: NotRequired[int]
-    padding: NotRequired[int]
-    padding_top: NotRequired[int]
-    padding_bottom: NotRequired[int]
-    padding_left: NotRequired[int]
-    padding_right: NotRequired[int]
+    flex: int
+    padding: int
+    padding_top: int
+    padding_bottom: int
+    padding_left: int
+    padding_right: int
 
-    text_align: NotRequired[Literal["left", "center", "right", "justify"]]
-    text_direction: NotRequired[Literal["ltr", "rtl"]]
+    text_align: Literal["left", "center", "right", "justify"]
+    text_direction: Literal["ltr", "rtl"]
 
-    font_size: NotRequired[int]
-    font_weight: NotRequired[Literal["normal", "bold"]]
-    font_variant: NotRequired[Literal["normal", "small_caps"]]
+    font_size: int
+    font_weight: Literal["normal", "bold"]
+    font_variant: Literal["normal", "small_caps"]
 
 
 class Style:

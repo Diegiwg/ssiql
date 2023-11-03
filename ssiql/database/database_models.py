@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, NotRequired, TypedDict
+from typing import TypedDict
 
 
 class PaymentMethod(Enum):
@@ -18,10 +18,10 @@ class Product(TypedDict):
     Represents a product in the database.
     """
 
-    id: NotRequired[int]
+    id: int
     name: str
     brand: str
-    reference: NotRequired[str]
+    reference: str
     price: float
     quantity: int
 
@@ -31,9 +31,9 @@ class Sale(TypedDict):
     Represents a sale in the database.
     """
 
-    id: NotRequired[int]
+    id: int
     occurred_at: str
     total_price: float
     payment_method: PaymentMethod
-    products: List[Product]
+    products: list[Product]
     customer_name: str
